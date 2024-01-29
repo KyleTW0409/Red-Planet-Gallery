@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import * as fs from 'fs';
 
 const server = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const NASA_ApiKey = "fhCyMQebnUS4t00WWMZvt0aNXn5g6xvVImx9r3GL";
 const APOD_API_URL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_ApiKey}`;
 
