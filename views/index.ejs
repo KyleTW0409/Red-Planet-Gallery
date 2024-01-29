@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Tektur:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Red Planet Gallery</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Red Planet Gallery</h1>
+        <img src="./images/mars.gif" alt="">
+    </div>
+
+    <div class="mars_banner">
+        <img id="apod_icon" src="./images/star.svg" alt="">
+        <h1>Mars</h1>
+        <img src="./images/mars_background.png" alt="">
+
+        <div id="facts_ctn" class="facts_grid">
+            <div>Distance from sun: <br> <span>227 900 000km</span></div>
+            <div>Radius: <br> <span>3390km</span></div>
+            <div>Surface Area: <br> <span>144 800 00km&#178;</span></div>
+
+            <div>Day Length: <br> <span>1d 0h 45min</span></div>
+            <div>Year Length: <br> <span>687 days</span></div>
+            <div>Surface Temperature: <br> <span>-125 to 20&deg;C</span></div>
+        </div>
+
+        <div class="blanket_div"></div>
+    </div>
+
+    <div class="Choice_Container">
+
+        
+        <div id="image_menu" class="option_placeholder rover_option image_menu">
+
+            <div class="rover_selector_v2">
+
+                <% if(locals.rover_data){ %>
+                    <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+                        <div class="selector_ctn">
+                            <img class="rover_select_pic" src="<%= rover_data.rover_images[n] %>" alt="">
+
+                            <% if(n != 0){ %>
+                                <div class="cover_div">
+                            <% } else { %>
+                                <div class="cover_div selected_rover">
+                            <% } %>
+                                <p class="rover_name"><%= rover_data.rover_manifests[n].name %></p>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+                
+            </div>
+
+            <p id="rover_prompt">select a rover</p>
+
+            <div class="photo_gallery">
+
+                <% if(locals.rover_data){ %>
+                    <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+                        <% if(n < 1){ %>
+                            <div class="<%= rover_data.rover_manifests[n].name %>_images">
+                        <% } else { %>
+                            <div class="<%= rover_data.rover_manifests[n].name %>_images no_display">
+                        <% } %>
+                            <div class="info_header">
+                                <p class="image_dates">Martian Sol: <span><%= rover_data.photos[n][0].sol %></span> <br> Earth Date: <span><%= rover_data.photos[n][0].earth_date %></span></p>
+
+                                <div class="rover_info_btn">
+                                    <img class="rover_icon" src="./images/rover_icon.svg"  alt="">
+                                    <img src="./images/question-mark-sign-svgrepo-com.svg" alt="">
+                                </div>
+                            </div>
+                            <% for(let m = 0; m < rover_data.photos[n].length; m++){ %>
+
+                                <% if(m % 5 == 0){ %>
+                                    <img class="full_screen mars_imagery" src="<%= rover_data.photos[n][m].img_src %>" alt="">
+                                <% } else { %>
+                                    <img class="mars_imagery" src="<%= rover_data.photos[n][m].img_src %>" alt="">
+                                <% } %>
+
+                            <% } %>
+                        </div>
+                    <% } %>
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="pop_up_div no_display">
+        <div class="close_btn_ctn"><img src="./images/cross-svgrepo-com.svg" alt=""></div>
+
+        <% if(locals.rover_data){ %>
+
+            <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+
+                <div class="rover_info <%= rover_data.rover_manifests[n].name %>_info no_display">
+                    <div class="div_for_portrait">
+                        <h1><%= rover_data.rover_manifests[n].name %> Rover</h1>
+                        <img src="<%= rover_data.rover_images[n] %>" alt="">
+                        <div style="display: flex; flex-direction: column;">
+                            <p><%- rover_data.rover_descriptions[n] %></p>
+                            <p class="rover_facts">
+                                Launch Date: <span><%= rover_data.rover_manifests[n].launch_date %></span> <br>
+                                Landing Date: <span><%= rover_data.rover_manifests[n].landing_date %></span> <br>
+                                Mission Status: <span><%= rover_data.rover_manifests[n].status %></span> <br>
+                                Latest Martian sol with images: <span><%= rover_data.rover_manifests[n].max_sol %></span> <br>
+                                Latest Earth date with images: <span><%= rover_data.rover_manifests[n].max_date %></span> <br>
+                                Total photos taken: <span><%= rover_data.rover_manifests[n].total_photos %></span>
+                            </p>
+                        </div>
+                            <p class="image_disclaimer">
+                                <% if(rover_data.rover_manifests[n].status === "complete"){ %>
+                                    * Due to <%= rover_data.rover_manifests[n].name %> having completed it's mission images are radomly selected from within it's lifespan.
+                                <% } else { %>
+                                    * Images from <%= rover_data.rover_manifests[n].name %> are the latest available.
+                                <% } %>
+                            </p>
+                    </div>
+                </div>
+
+            <% } %>
+
+        <% } %>
+
+        <div class="image_viewer_ctn no_display">
+            <img class="full_screen_view" src="" alt="">
+        </div>
+
+           <div class="APOD_Container no_display">
+            <% if(locals.APOD){ %>
+                    <h2>Picture Of The Day</h2>
+                    <p class="apod_date"> <% let date =  new Date().toDateString(); %> <%= date %> </p>
+                    <div class="div_for_portrait">
+                        <img class="APOD_Image" src="<%= APOD.url %>" alt="">
+                
+                        <div class="image_description">
+                            <h3><%= APOD.title %></h3>
+                            <p><%= APOD.explanation %></p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+    </div>
+
+    <div class="scroll_up_ctn no_display">
+        <div><img src="./images/back-arrow-navigation-svgrepo-com.svg" alt=""></div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+
+        $(".rover_images").click(function(){
+        $(".defualt").fadeOut(0);
+        $(".rover_option").fadeIn(300);
+        });
+
+        $(".orbital_images").click(function(){
+        $(".defualt").fadeOut(0);
+        $(".orbital_option").fadeIn(300);
+        });
+
+
+    $(".go_back_ctn").click(function(event){
+        $(".image_menu").fadeOut(0);
+        $(".defualt").fadeIn(300);
+
+    });
+
+    $(".drop_btn").click(function(){
+        $(".drop_menu").slideToggle();
+        $(".drop_btn > img").toggleClass("rotate_arrow")
+
+    });
+
+
+    $(".drop_menu > button").click(function(event){
+        let value = event.target.textContent;
+        $(`.${value}_images`).removeClass("no_display");
+        event.target.textContent = $(".drop_btn > span").text();
+
+        $(`.${$(".drop_btn > span").text()}_images`).addClass("no_display");
+        $(".drop_btn > span").text(value);
+        $(".drop_menu").slideToggle();
+        $(".drop_btn > img").toggleClass("rotate_arrow");
+    });
+
+    $(".rover_info_btn").click(function(){
+        $(".pop_up_div").fadeIn(300);
+
+        $(`.${$(".selected_rover > p").text()}_info`).removeClass("no_display");
+    });
+
+    $("#apod_icon").click(function(){
+        $(".pop_up_div").fadeIn(300);
+        $(".APOD_Container").removeClass("no_display");
+        
+    });
+
+    $(".close_btn_ctn > img").click(function(event){
+
+        $(`.${event.target.parentElement.parentElement.classList[0].toString()}`).fadeOut(300);
+        $(".rover_info").addClass("no_display");
+        $(".image_viewer_ctn").addClass("no_display");
+        $(".APOD_Container").addClass("no_display");
+        
+    });
+
+    $(".photo_gallery .mars_imagery").click(function(event){
+        $(".pop_up_div").fadeIn(300);
+        $(".image_viewer_ctn").removeClass("no_display")
+
+        var img_src = event.target.getAttribute("src");
+
+        $(".full_screen_view").attr("src", img_src);
+    });
+
+    window.addEventListener('scroll', function(){
+        
+        var scrollPos = window.scrollY || window.pageYOffset;
+
+        var scrollLimit = window.innerHeight || document.documentElement.clientHeight;
+
+        if(scrollPos > scrollLimit)
+        {
+            $(".scroll_up_ctn").fadeIn(100);
+        }
+        else
+        {
+            $(".scroll_up_ctn").fadeOut(100);
+        }
+
+    });
+
+    $(".scroll_up_ctn").click(function(){
+        var elementToScrollTo = document.getElementById("facts_ctn");
+
+        elementToScrollTo.scrollIntoView({behavior: "smooth"});
+    });
+
+    $(".cover_div").click(function(event){
+
+        if(!event.target.classList.toString().includes("selected_rover")  && event.target.classList.toString().includes("cover_div"))
+        {
+            var value = $(".selected_rover > p").text();
+            //alert(`.${value}_images`);
+            $(`.${$(".selected_rover > p").text()}_images`).addClass("no_display");
+            $(".selected_rover").removeClass("selected_rover");
+
+            event.target.classList.add("selected_rover");
+            $(`.${$(".selected_rover > p").text()}_images`).removeClass("no_display");
+
+        }
+        else if(!event.target.parentElement.classList.toString().includes("selected_rover")  && event.target.parentElement.classList.toString().includes("cover_div")){
+            $(`.${$(".selected_rover > p").text()}_images`).addClass("no_display");
+            $(".selected_rover").removeClass("selected_rover");
+
+            event.target.parentElement.classList.add("selected_rover");
+            $(`.${$(".selected_rover > p").text()}_images`).removeClass("no_display");
+        }
+    });
+
+    });
+</script>
+
+</html>

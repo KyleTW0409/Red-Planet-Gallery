@@ -1,0 +1,907 @@
+@keyframes fadeIn{
+    0% {opacity: 0%;}
+    100% {transform: 100%;}
+}
+
+@keyframes fadeOut{
+    0% {opacity: 100%;}
+    100% {transform: 0%;}
+}
+
+@keyframes expand{
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
+
+.mars_img{
+    width: 300px;
+    margin: 20px;
+}
+
+:root{
+    --background_colour: #1d1d1d;
+    --accent_colour: #D04848;
+    --yellow: #FAEF5D;
+
+    --nav_height: 80px;
+    --side_margin: 20px;
+}
+
+#fonts{
+    font-family: 'Lexend', sans-serif;
+    font-family: 'Tektur', sans-serif;
+    font-family: 'Playfair Display', serif;
+}
+
+body{
+    margin: 0;
+    position: relative;
+}
+
+html{
+    background-color: #1d1d1d;
+    font-family: 'Tektur', sans-serif;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+.header{
+    width: 100%;
+    background: url("../images/shooting_star.gif");
+    background-size: 50%;
+    background-repeat: repeat-x;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid white;
+    border-radius: 0px 0px 20px 20px;
+    z-index: 2;
+    position: fixed;
+    justify-content: space-between;
+    height: var(--nav_height);
+}
+
+.header > img{
+    width: 50px;
+    margin-right: var(--side_margin);
+}
+
+.header > h1{
+    margin: 0px;
+    font-size: 22px;
+    text-align: center;
+    margin-left: var(--side_margin);
+}
+
+.mars_banner{
+    width: 100%;
+    background: url("../images/shooting_star.gif");
+    background-size: 50%;
+    background-repeat: repeat;
+    text-align: center;
+    padding-top: var(--nav_height);
+    position: relative;
+    z-index: 1;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#apod_icon{
+    width: 25px;
+    position: absolute;
+    top: calc(var(--nav_height) + 10px);
+    right: 0;
+    margin-right: var(--side_margin);
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#apod_icon:hover{
+    transform: translateY(3px);
+    transition: 0.3s;
+}
+
+.mars_banner > h1{
+    font-size: 40px;
+    z-index: 1;
+    top: calc(var(--nav_height) + 30px);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.mars_banner > img{
+    width: 85%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.facts_grid{
+    display: grid;
+    width: calc(100% - 20px);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    row-gap: 20px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    font-weight: 400;
+    border-radius: 0px 0px 20px 20px;
+    
+}
+
+.facts_grid > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.facts_grid span{
+    color: var(--accent_colour);
+    font-weight: bold;
+}
+
+.blanket_div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0, 0.1), rgba(0,0,0,0.8));
+    top:0;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.APOD_Image{
+    width: 100%;
+    float: left;
+}
+
+.APOD_Container{
+    width: 100%;
+}
+
+.APOD_Container h2{
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+.APOD_Container h3{
+    color: var(--accent_colour);
+    font-size: 25px;
+}
+
+
+.apod_date{
+    font-size: small;
+    text-align: center;
+    margin-top: 0;
+}
+
+.image_description{
+    width: 100%;
+}
+
+.image_description > *{
+    margin-left: var(--side_margin);
+    margin-right: var(--side_margin);
+}
+
+.Choice_Container{
+    width: 100%;
+    background-color: #1d1d1d;
+    display: flex;
+    justify-content: center;
+    background: url("./images/shooting_star.gif");
+    background-size: contain;
+    transform: translateY(-10px);
+}
+
+.option_placeholder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.options_container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+}
+
+.option{
+    width: 35%;
+    height: 35%;
+    border: 2px solid var(--accent_colour);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #1d1d1d;
+    text-align: center;
+}
+
+.option > img{
+    width: 50px;
+}
+
+.image_menu{
+    background-color: #1d1d1d;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.image_menu > p{
+    text-align: center;
+    align-self: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: small;
+    font-weight: bold;
+}
+
+.fade_in{
+    animation-name: fadeIn;
+    animation-duration: 0.2s;
+}
+
+.fade_out{
+    animation-name: fadeOut;
+    animation-duration: 0.2s;
+}
+
+.go_back_ctn{
+    padding: 20px;
+    display: flex;
+}
+
+.go_back_ctn > img
+{
+    margin-right: var(--side_margin);
+}
+
+.info_section{
+    display: flex;
+    width: 100%;
+}
+
+.info_header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.sanity_div{
+    width: 35px;
+}
+
+.rover_info_btn{
+    margin-right: var(--side_margin);
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: 0.3s;
+    width: auto !important;
+    cursor: pointer;
+}
+
+.rover_info_btn > img{
+    height: 100%;
+}
+
+.rover_info_btn > img:hover{
+    transform: none !important;
+}
+
+.rover_info_btn:hover{
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+
+.rover_icon{
+    margin-right: 5px;
+}
+
+.rover_selector{
+    position: relative;
+    width: 150px
+}
+
+.drop_menu{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    display: none;
+    background-color: #2D2D2D;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.drop_btn{
+    width: 100%;
+    background-color: #1d1d1d;
+    color: white;
+    text-align: center;
+    font-family: 'Tektur', sans-serif;
+    padding: 8px;
+    font-size: medium;
+    box-shadow: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #4A4A4A;
+}
+
+.rotate_arrow{
+    transform: rotate(180deg);
+    transition: 0.3s;
+}
+
+.drop_btn > img{
+    transition: 0.3s;
+}   
+
+.drop_menu > button
+{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-family: 'Tektur', sans-serif;
+    padding: 10px;
+    font-size: medium;
+    border-bottom: 3px solid var(--accent_colour);
+    border-radius: 5px 5px 5px 5px;
+}
+
+.rover_info_panel{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.85);
+    z-index: 2;
+    bottom: 0;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+.close_btn_ctn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.close_btn_ctn >img:hover{
+    transform: translateY(5px);
+    transition: 0.3s;
+}
+
+.close_btn_ctn > img{
+    height: 100%;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.rover_info_panel > img{
+    width: 100%;
+    position: static;
+}
+
+.rover_info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rover_info  h1{
+    margin-top: 0px;
+    max-width: 95%;
+    text-align: center;
+}
+
+.rover_info  img{
+    max-width: 90%;
+}
+
+.rover_info  p{
+    margin-left: var(--side_margin);
+    margin-right: var(--side_margin);
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.rover_info span{
+    color: var(--accent_colour);
+}
+
+.rover_facts{
+    font-size: smaller;
+}
+
+.image_disclaimer{
+    font-size: 12px;
+    text-align: center;
+    width: auto;
+    align-self: center !important;
+}
+
+
+.last_words{
+    text-align: center !important;
+    color: white !important;
+    font-size: smaller;
+    align-self: center;
+}
+
+.photo_gallery{
+    width: 100%;
+    display: inline;
+    margin-top: 20px;
+
+}
+
+.photo_gallery img{
+    width: 49%;
+    display: inline;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.photo_gallery img:hover{
+    transform: translateY(-5px);
+    transition: 0.2s;
+}
+
+.photo_gallery p{
+    margin-top: 0;
+    margin-left: var(--side_margin);
+    font-size: 14px;
+
+}
+
+
+.full_screen{
+    width: 100% !important;
+}
+
+.image_dates{
+    font-size: small !important;
+    margin-bottom: 0;
+}
+
+.image_dates > span{
+    color: var(--accent_colour);
+}
+
+.image_viewer_ctn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.full_screen_view{
+    max-width: 100%;
+    min-width: 50%;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop_up_div{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
+    bottom: 0;
+}
+
+.scroll_up_ctn{
+    position: fixed;
+    z-index: 3;
+    width: 50px;
+    height: 50px;
+    bottom: var(--side_margin);
+    right: var(--side_margin);
+    background-color: rgba(0,0,0,1);
+    border: 3px solid var(--accent_colour);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.scroll_up_ctn:hover{
+    transform: translateY(-10px);
+    transition: 0.3s;
+}
+
+.scroll_up_ctn > div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll_up_ctn  img{
+    transform: rotate(90deg);
+    width: 40%;
+}
+
+:root{
+    --selector_width: 100%;
+}
+
+.rover_selector_v2{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.rover_selector_v2::-webkit-scrollbar{
+    display: none;
+}
+
+.selector_ctn{
+    position: relative;
+    max-width: 45% !important;
+    flex-shrink: 0;
+    height: calc(100vw * 0.3);
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover_div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0, 0), rgba(0,0,0,0.6));
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 3px solid rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.rover_selector_v2 img{
+    width: 70%;
+}
+
+.cover_div:hover > .rover_name{
+    transform: translateY(-5px);
+    transition: 0.2s;
+}
+
+.rover_name{
+    transition: 0.2s;
+}
+
+.selected_rover{
+    border-bottom: 3px solid var(--accent_colour);
+    color: var(--accent_colour);
+    font-weight: bold;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.selected_rover:hover > .rover_name
+{
+    transform: none !important;
+}
+
+
+
+
+@media screen and (min-width: 600px) {
+
+    .mars_banner > img{
+        width: 55%;
+    }
+
+    .mars_banner > h1{
+        font-size: 55px !important;
+    }
+
+    
+.APOD_Container h2{
+    font-size: 35px;
+}
+
+.APOD_Container h3{
+    font-size: 30px;
+}
+
+.rover_info h1{
+    font-size: 35px;
+}
+
+    .facts_grid{
+        font-size: small;
+    }
+
+    .APOD_Image{
+        max-height: 75vh !important;
+        width: auto !important;
+    }
+
+    .full_screen{
+        width: 49.5% !important;
+    }
+
+    .rover_selector{
+        width: 180px;
+    }
+
+    .drop_btn{
+        width: 180px;
+        font-size: large;
+    }
+
+    .drop_menu{
+        width: 180px;
+        left: 0;
+    }
+
+    .rover_info_btn{
+        height: 25px;
+    }
+
+    .sanity_div{
+        width: 45px;
+    }
+
+    .image_viewer_ctn{
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .full_screen_view{
+        max-height: 80vh !important;
+        max-width: none !important;
+        min-width: 10% !important;
+    }
+    
+    .header > h1{
+        font-size: 23px;
+    }
+
+    .header > img{
+        width: 60px;
+    }
+    
+    :root{
+        --nav_height: 90px
+    }
+
+    .scroll_up_ctn{
+        width: 60px;
+        height: 60px;
+    }
+
+    .rover_info  img{
+        max-height: 75vh;
+        max-width: 90% !important;
+    }
+
+    .rover_info  p{
+        font-size: large;
+    }
+
+    .rover_facts, .image_disclaimer{
+        font-size: medium !important;
+    }
+
+    .close_btn_ctn{
+        height: 7%;
+    }
+
+    .photo_gallery img{
+        width: 49.5%;   
+    }
+
+    .selector_ctn{
+        width: 25% !important;
+        height: calc(100vw * 0.175);
+    }
+
+    #apod_icon{
+        width: 35px;
+    }
+
+}
+
+@media screen and (min-width: 1000px) {
+
+    :root{
+        --side_margin: 40px;
+    }
+
+    .mars_banner > img{
+        width: 30%;
+    }
+
+    .header{
+        background-size: 25%;
+        justify-content: center;
+    }
+
+    .header > h1{
+        margin-right: var(--side_margin);
+    }
+
+    .mars_banner{
+        background-size: 25%;
+        background-position: center;
+    }
+
+    .rover_selector_v2{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+
+    .selector_ctn{
+        width: 25% !important;
+        height: calc(100vw * 0.1) !important;
+        font-size: medium;
+    }
+
+    .cover_div{
+        border-bottom: 4px solid rgba(0,0,0,0.6);
+    }
+
+    .selected_rover{
+        border-bottom: 4px solid var(--accent_colour);
+    }
+
+
+    .photo_gallery img{
+        width: 24.6%;   
+    }
+
+    
+    .full_screen{
+        width: 24.6% !important;
+    }
+
+    .image_dates{
+        font-size: medium !important;
+    }
+
+    .rover_info_btn{
+        height: 45px;
+    }
+
+    .rover_icon{
+        height: 100%;
+    }
+} 
+
+@media (orientation: landscape){
+    .facts_grid{
+        width: 50%;
+        top: var(--nav_height);
+        right: 0;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        font-size: medium;
+    }
+
+    .APOD_Image{
+        margin-left: var(--side_margin);
+        margin-right: var(--side_margin);
+    }
+    
+    .facts_grid > div{
+        justify-content: center;
+    }
+
+    .rover_info img{
+        float: left;
+        margin-right: var(--side_margin);
+        margin-left: var(--side_margin);
+        max-width: 50% !important;
+    }
+
+    .mars_banner{
+        display: flex;
+    }
+
+    .mars_banner > img{
+        margin-left: 20%;
+    }
+
+    .mars_banner > h1{
+        margin-left: 0;
+        margin-right: 0;
+        top: 42%;
+        bottom: 0;
+        left: 10%;
+        text-align: left;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 120px !important;
+    }
+
+    #apod_icon{
+        left: var(--side_margin);
+        margin-right: 0;
+        margin-left: 0;
+        width: 45px;
+    }
+
+    .blanket_div{
+        background-image: linear-gradient(to right, rgba(0,0,0, 0.1), rgba(0,0,0,0.7));
+    }
+
+    .rover_facts{
+        align-self: flex-end;
+    }
+
+    .image_disclaimer{
+        width: auto;
+    }
+
+}
+
+@media (orientation: portrait){
+    .div_for_portrait{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.no_display{
+    display: none;
+}  
+
+
