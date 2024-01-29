@@ -284,6 +284,10 @@ html{
 }
 
 .info_header{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -299,6 +303,10 @@ html{
 .rover_info_btn{
     margin-right: var(--side_margin);
     height: 25px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -517,6 +525,7 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20vh;
 }
 
 .pop_up_div{
