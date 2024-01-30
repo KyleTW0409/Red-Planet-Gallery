@@ -290,15 +290,10 @@ html{
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
     align-items: center;
     margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.sanity_div{
-    width: 35px;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .rover_info_btn{
@@ -315,6 +310,8 @@ html{
     transition: 0.3s;
     width: auto !important;
     cursor: pointer;
+    position: absolute;
+    right: 0;
 }
 
 .rover_info_btn > img{
@@ -507,6 +504,7 @@ html{
 .image_dates{
     font-size: small !important;
     margin-bottom: 0;
+    position: absolute;
 }
 
 .image_dates > span{
