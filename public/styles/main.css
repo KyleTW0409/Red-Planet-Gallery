@@ -472,14 +472,12 @@ html{
 
 .photo_gallery{
     width: 100%;
-    display: inline;
     margin-top: 20px;
 
 }
 
 .photo_gallery img{
     width: 49%;
-    display: inline;
     cursor: pointer;
     transition: 0.2s;
 }
