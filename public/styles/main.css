@@ -291,15 +291,16 @@ html{
     display: flex;
     width: 100%;
     align-items: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
+    position: relative;
+    bottom: var(--side_margin);
+}
+
+#rover_prompt{
+    margin-bottom: 50px;
 }
 
 .rover_info_btn{
     margin-right: var(--side_margin);
-    height: 25px;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -310,11 +311,11 @@ html{
     -webkit-justify-content: flex-end;
     transition: 0.3s;
     cursor: pointer;
+    position: absolute;
+    right: 0;
+    font-size: larger;
 }
 
-.rover_info_btn > img{
-    height: 100%;
-}
 
 .rover_info_btn > img:hover{
     transform: none !important;
@@ -323,10 +324,12 @@ html{
 .rover_info_btn:hover{
     transform: translateY(-5px);
     transition: 0.3s;
+    color: var(--accent_colour);
 }
 
 .rover_icon{
-    margin-right: 5px;
+    width: 30px !important;
+    margin-right: 10px;
 }
 
 .rover_selector{
@@ -500,6 +503,7 @@ html{
 .image_dates{
     font-size: small !important;
     margin-bottom: 0;
+    position: absolute;
 }
 
 .image_dates > span{
@@ -686,9 +690,6 @@ html{
         left: 0;
     }
 
-    .rover_info_btn{
-        height: 25px;
-    }
 
     .sanity_div{
         width: 45px;
@@ -760,6 +761,10 @@ html{
         --side_margin: 40px;
     }
 
+    .info_header{
+        bottom: 30px;
+    }
+
     .mars_banner > img{
         width: 30%;
     }
@@ -813,12 +818,9 @@ html{
         font-size: medium !important;
     }
 
-    .rover_info_btn{
-        height: 45px;
-    }
-
     .rover_icon{
-        height: 100%;
+        width: 35px !important;
+        margin-right: 15px;
     }
 } 
 
