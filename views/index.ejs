@@ -42,7 +42,7 @@
             <div class="rover_selector_v2">
 
                 <% if(locals.rover_data){ %>
-                    <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+                    <% for(let n = 0; n < rover_data.rover_names.length; n++){ %>
                         <div class="selector_ctn">
                             <img class="rover_select_pic" src="<%= rover_data.rover_images[n] %>" alt="">
 
@@ -51,7 +51,7 @@
                             <% } else { %>
                                 <div class="cover_div selected_rover">
                             <% } %>
-                                <p class="rover_name"><%= rover_data.rover_manifests[n].name %></p>
+                                <p class="rover_name"><%= rover_data.rover_names[n] %></p>
                             </div>
                         </div>
                     <% } %>

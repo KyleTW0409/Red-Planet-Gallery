@@ -1,6 +1,5 @@
 import express from "express";
 import axios from "axios";
-import bodyParser from "body-parser";
 import * as fs from 'fs';
 
 const server = express();
@@ -13,6 +12,7 @@ server.use(express.static("public"));
 const rovers = ["Curiosity", "Spirit", "Opportunity", "Perseverance"];
 
 const rover_info = {
+    rover_names: rovers,
     rover_images: ["./images/curiosity.png", "./images/spirit_rover.png", "./images/Opportnunity_rover.png", "./images/perseverance_rover.png"],
     rover_descriptions: ["Part of NASA's Mars Science Laboratory mission, Curiosity is the largest and most capable rover ever sent to Mars.<br /><br />Curiosity set out to answer the question: Did Mars ever have the right environmental conditions to support small life forms called microbes? Early in its mission, Curiosity's scientific tools found chemical and mineral evidence of past habitable environments on Mars. It continues to explore the rock record from a time when Mars could have been home to microbial life.",
                         // ^ Description credited to https://mars.nasa.gov/msl/mission/overview/
@@ -57,7 +57,6 @@ server.get("/", async (req, res) => {
                     {
                         var randSol = randomNumber(rover_response.data.photo_manifest.max_sol);
                         photos_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rovers[n]}/photos?sol=${randSol}&api_key=${NASA_ApiKey}`);
-                        console.log(randSol);
                         imagery[n] = photos_response.data.photos;
                     }
                     else
