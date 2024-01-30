@@ -293,7 +293,8 @@ html{
     align-items: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    position: relative;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
 }
 
 .rover_info_btn{
@@ -308,10 +309,7 @@ html{
     justify-content: flex-end;
     -webkit-justify-content: flex-end;
     transition: 0.3s;
-    width: auto !important;
     cursor: pointer;
-    position: absolute;
-    right: 0;
 }
 
 .rover_info_btn > img{
@@ -502,7 +500,6 @@ html{
 .image_dates{
     font-size: small !important;
     margin-bottom: 0;
-    position: absolute;
 }
 
 .image_dates > span{
