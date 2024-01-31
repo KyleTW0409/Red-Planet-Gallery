@@ -9,7 +9,6 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 const NASA_ApiKey = process.env.NASA_API_KEY;
-console.log(NASA_ApiKey);
 const APOD_API_URL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_ApiKey}`;
 
 server.use(express.static("public"));

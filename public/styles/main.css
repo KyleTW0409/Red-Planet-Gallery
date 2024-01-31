@@ -637,8 +637,17 @@ html{
     transform: none !important;
 }
 
+footer{
+    height: var(--nav_height);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
+.photos_container{
+    margin-top: 10px;
+}
 
 @media screen and (min-width: 600px) {
 
@@ -772,6 +781,10 @@ html{
     .header{
         background-size: 25%;
         justify-content: center;
+    }
+
+    footer{
+        background-size: 25%;
     }
 
     .header > h1{
