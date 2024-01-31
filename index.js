@@ -1,10 +1,14 @@
 import express from "express";
 import axios from "axios";
 import * as fs from 'fs';
+import * as dotenv from "dotenv";
 
 const server = express();
+
+dotenv.config();
+
 const port = process.env.PORT || 3000;
-const NASA_ApiKey = "fhCyMQebnUS4t00WWMZvt0aNXn5g6xvVImx9r3GL";
+const NASA_ApiKey = process.env.NASA_API_KEY;
 const APOD_API_URL = `https://api.nasa.gov/planetary/apod?api_key=${NASA_ApiKey}`;
 
 server.use(express.static("public"));
