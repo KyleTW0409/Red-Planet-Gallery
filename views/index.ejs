@@ -71,7 +71,16 @@
                             <div class="<%= rover_data.rover_manifests[n].name %>_images no_display">
                         <% } %>
                             <div class="info_header">
-                                <p class="image_dates">Martian Sol: <span><%= rover_data.photos[n][0].sol %></span> <br> Earth Date: <span><%= rover_data.photos[n][0].earth_date %></span></p>
+                                <p class="image_dates">Martian Sol: <span><%= rover_data.photos[n][0].sol %></span> <br>
+                                     Earth Date: <span><%= rover_data.photos[n][0].earth_date %></span> <br>
+                                     <span class="image_update_status">
+                                        <% if(rover_data.rover_manifests[n].status === "complete"){ %>
+                                            * Images randomly selected daily.
+                                        <% } else{ %>
+                                            * Images updated upon release.
+                                        <% } %>
+                                     </span>
+                                    </p>
 
                                 <div class="rover_info_btn">
                                     <img class="rover_icon" src="./images/rover_icon.svg"  alt="">
@@ -162,7 +171,7 @@
     </div>
 
     <footer>
-        by Kyle.
+       by Kyle.
     </footer>
 
 </body>

@@ -643,10 +643,16 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: x-small;
 }
 
 .photos_container{
     margin-top: 10px;
+}
+
+.image_update_status{
+    font-size: x-small;
+    color: white !important;
 }
 
 @media screen and (min-width: 600px) {
@@ -718,6 +724,7 @@ footer{
     .header > h1{
         font-size: 23px;
     }
+
 
     .header > img{
         width: 60px;
