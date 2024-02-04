@@ -654,7 +654,7 @@ footer{
 }
 
 .photos_container{
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .image_update_status{
@@ -848,6 +848,10 @@ footer{
     .rover_icon{
         width: 35px !important;
         margin-right: 15px;
+    }
+
+    .photos_container{
+        margin-top: 15px;
     }
 } 
 
