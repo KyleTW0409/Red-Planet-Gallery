@@ -296,11 +296,11 @@ html{
     width: 100%;
     align-items: center;
     position: relative;
-    bottom: var(--side_margin);
+    height: 75px;
 }
 
 #rover_prompt{
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .rover_info_btn{
@@ -480,7 +480,7 @@ html{
 
 .photo_gallery{
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 
 }
 
@@ -653,9 +653,6 @@ footer{
     font-size: x-small;
 }
 
-.photos_container{
-    margin-top: 20px;
-}
 
 .image_update_status{
     font-size: x-small;
@@ -784,10 +781,6 @@ footer{
         --side_margin: 40px;
     }
 
-    .info_header{
-        bottom: 30px;
-    }
-
     .mars_banner > img{
         width: 30%;
     }
@@ -850,9 +843,6 @@ footer{
         margin-right: 15px;
     }
 
-    .photos_container{
-        margin-top: 15px;
-    }
 } 
 
 @media (orientation: landscape){
