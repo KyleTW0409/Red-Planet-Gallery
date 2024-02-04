@@ -59,10 +59,10 @@ server.get("/", async (req, res) => {
                     var imagery = [4];
                     if(rover_response.data.photo_manifest.status !== "active")
                     {
-                        var randSol = randomNumber(rover_response.data.photo_manifest.max_sol -5);
+                        var randSol = randomNumber(rover_response.data.photo_manifest.max_sol -1);
                         photos_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rovers[n]}/photos?sol=${randSol}&api_key=${NASA_ApiKey}`);
 
-                        while(photos_response.status != 200 || photos_response.data.photos.length == 0)
+                        while(photos_response.status != 200 || photos_response.data.photos.length < 25)
                         {
                             randSol = randomNumber(rover_response.data.photo_manifest.max_sol -1);
                             photos_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rovers[n]}/photos?sol=${randSol}&api_key=${NASA_ApiKey}`);
