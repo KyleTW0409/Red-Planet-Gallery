@@ -66,9 +66,9 @@
                 <% if(locals.rover_data){ %>
                     <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
                         <% if(n < 1){ %>
-                            <div class="<%= rover_data.rover_manifests[n].name %>_images">
+                            <div class="<%= rover_data.rover_names[n] %>_images">
                         <% } else { %>
-                            <div class="<%= rover_data.rover_manifests[n].name %>_images no_display">
+                            <div class="<%= rover_data.rover_names[n] %>_images no_display">
                         <% } %>
                             <div class="info_header">
                                 <p class="image_dates">Martian Sol: <span><%= rover_data.photos[n][0].sol %></span> <br>
@@ -117,9 +117,9 @@
 
             <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
 
-                <div class="rover_info <%= rover_data.rover_manifests[n].name %>_info no_display">
+                <div class="rover_info <%= rover_data.rover_names[n] %>_info no_display">
                     <div class="div_for_portrait">
-                        <h1><%= rover_data.rover_manifests[n].name %> Rover</h1>
+                        <h1><%= rover_data.rover_names[n] %> Rover</h1>
                         <img src="<%= rover_data.rover_images[n] %>" alt="">
                         <div style="display: flex; flex-direction: column;">
                             <p><%- rover_data.rover_descriptions[n] %></p>
@@ -134,9 +134,9 @@
                         </div>
                             <p class="image_disclaimer">
                                 <% if(rover_data.rover_manifests[n].status === "complete"){ %>
-                                    * Due to <%= rover_data.rover_manifests[n].name %> having completed it's mission images are radomly selected from within it's lifespan.
+                                    * Due to <%= rover_data.rover_names[n] %> having completed it's mission images are radomly selected from within it's lifespan.
                                 <% } else { %>
-                                    * Images from <%= rover_data.rover_manifests[n].name %> are the latest available.
+                                    * Images from <%= rover_data.rover_names[n] %> are the latest available.
                                 <% } %>
                             </p>
                     </div>

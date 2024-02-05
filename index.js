@@ -26,7 +26,7 @@ const rover_info = {
                         // ^ Description credited to https://www.jpl.nasa.gov/missions/mars-exploration-rover-opportunity-mer
                         "The Perseverance Mars rover is part of NASA’s Mars Exploration Program, a long-term effort of robotic exploration of the Red Planet. A key objective for Perseverance’s mission on Mars is astrobiology, including the search for signs of ancient microbial life.<br/><br/>Perseverance is investigating Jezero Crater – a region of Mars where the ancient environment may have been favorable for microbial life – probing the Martian rocks for evidence of past life. The rover carries an entirely new subsystem to collect and prepare Martian rocks and sediment samples that includes a coring drill on its arm and a rack of sample titanium tubes in its chassis. Throughout its exploration of the region, the rover will collect promising samples, sealing them are tubes and storing them in its chassis until Perseverance deposits them on the Martian surface to be retrieved by a future mission. Perseverance will likely create multiple “depots” later in the mission for this purpose. increases the likelihood that especially valuable samples will be accessible for retrieval. Subsequent NASA missions, in cooperation with ESA (European Space Agency), would send spacecraft to Mars to collect these sealed samples from the surface and bring them to Earth for in-depth analysis using powerful laboratory equipment too large to take to Mars.<br/><br>Two science instruments mounted on the rover’s robotic arm are used to search for signs of past life and determine where to collect samples by analyzing the chemical, mineral, physical, and organic characteristics of Martian rocks. On the rover’s mast, two science instruments provide high-resolution imaging and three types of spectroscopy for characterizing rocks and soil from a distance, also helping to determine which rock targets to explore up close.<br/><br/>The Perseverance rover used the same sky crane landing system as Curiosity, but with the ability to land in more challenging terrain with two enhancements, making more rugged sites eligible as safe landing candidates."],
                         // ^ Description credited to https://www.jpl.nasa.gov/missions/mars-2020-perseverance-rover
-    rover_manifests: [],
+    rover_manifests: [4],
     photos: [],
     date: ""
 };
@@ -53,7 +53,16 @@ server.get("/", async (req, res) => {
                 for(let n = 0; n < rovers.length; n++)
                 {
                     var rover_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/manifests/${rovers[n]}?api_key=${NASA_ApiKey}`);
-                    rover_info.rover_manifests.push(rover_response.data.photo_manifest);
+                    let rover_mission_data = {
+                        landing_date: rover_response.data.photo_manifest.landing_date,
+                        launch_date: rover_response.data.photo_manifest.launch_date,
+                        status: rover_response.data.photo_manifest.status,
+                        max_sol: rover_response.data.photo_manifest.max_sol,
+                        max_date: rover_response.data.photo_manifest.max_date,
+                        total_photos: rover_response.data.photo_manifest.total_photos
+                    };
+                    rover_info.rover_manifests[n] = rover_mission_data;
+                    console.log(rover_info.rover_manifests[0]);
 
                     var photos_response;
                     var imagery = [4];
@@ -67,6 +76,7 @@ server.get("/", async (req, res) => {
                             randSol = randomNumber(rover_response.data.photo_manifest.max_sol -1);
                             photos_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rovers[n]}/photos?sol=${randSol}&api_key=${NASA_ApiKey}`);
                         }
+
 
                         imagery[n] = photos_response.data.photos;
                     }
