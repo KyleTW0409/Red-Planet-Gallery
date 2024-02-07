@@ -799,7 +799,7 @@ footer{
 
     .mars_banner{
         background-size: 25%;
-        background-position: center;
+        background-position: bottom;
     }
 
     .rover_selector_v2{
@@ -898,7 +898,7 @@ footer{
     }
 
     .blanket_div{
-        background-image: linear-gradient(to right, rgba(0,0,0, 0.1), rgba(0,0,0,0.7));
+        background-image: linear-gradient(rgba(0,0,0, 0), rgba(0,0,0,0.7));
     }
 
     .rover_facts{
