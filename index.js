@@ -41,7 +41,7 @@ server.get("/", async (req, res) => {
         const jsonData = fs.readFileSync("rover_info.json");
         const rover_obj = JSON.parse(jsonData);
 
-        if (rover_obj.date !== new Date().toDateString())
+        if (rover_obj.date === new Date().toDateString())
         {
             res.render("index.ejs", {APOD: response.data, rover_data: rover_obj});
             console.log("Fetched cached data.");
