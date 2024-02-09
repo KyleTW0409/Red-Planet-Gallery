@@ -266,6 +266,16 @@
             $(".scroll_up_ctn").fadeOut(100);
         }
 
+        
+        if(scrollPos > 0)
+        {
+            $(".header").addClass("header_scroll");
+        }
+        else if(scrollPos == 0)
+        {
+            $(".header").removeClass("header_scroll");
+        }
+
     });
 
     $(".scroll_up_ctn").click(function(){

@@ -54,11 +54,18 @@ html{
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: 0px 0px 20px 20px;
     z-index: 2;
     position: fixed;
     justify-content: space-between;
     height: var(--nav_height);
+    border-bottom: 2px solid transparent;
+    transition: 0.5s;
+}
+
+.header_scroll{
+    border-radius: 0px 0px 20px 20px;
+    border-bottom: 2px solid white;
+    transition: 0.5s;
 }
 
 .header > img{
