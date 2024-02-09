@@ -39,6 +39,11 @@ const new_rover_obj = {
     photos: ""
 }
 
+const json_obj_to_save = {
+    rover_objs: [],
+    date: ""
+}
+
 server.get("/", async (req, res) => {
 
     try {

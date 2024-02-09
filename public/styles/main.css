@@ -54,11 +54,18 @@ html{
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: 0px 0px 20px 20px;
     z-index: 2;
     position: fixed;
     justify-content: space-between;
     height: var(--nav_height);
+    transition: 0.4s;
+    border-bottom: 2px solid transparent;
+}
+
+.header_scroll{
+    border-bottom: 2px solid white;
+    transition: 0.4s;
+    border-radius: 0px 0px 20px 20px;
 }
 
 .header > img{
@@ -872,6 +879,7 @@ footer{
 
     .mars_banner{
         display: flex;
+        background-position: center;
     }
 
     .mars_banner > img{
@@ -898,7 +906,7 @@ footer{
     }
 
     .blanket_div{
-        background-image: linear-gradient(to right, rgba(0,0,0, 0.1), rgba(0,0,0,0.7));
+        background-image: linear-gradient(rgba(0,0,0, 0), rgba(0,0,0,0.7));
     }
 
     .rover_facts{
