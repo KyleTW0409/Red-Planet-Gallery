@@ -35,14 +35,21 @@ const new_rover_obj = {
     name: "",
     image: "",
     description: "",
-    manifest: "",
-    photos: ""
+    manifest: {},
+    photos: []
 }
 
 const json_obj_to_save = {
     rover_objs: [],
+    apod_obj: {},
     date: ""
 }
+
+const apod_data = {
+    image: "",
+    title: "",
+    description: ""
+};
 
 server.get("/", async (req, res) => {
 
