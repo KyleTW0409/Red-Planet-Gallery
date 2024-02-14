@@ -35,7 +35,15 @@ const rover_info = {
 server.get("/", async (req, res) => {
 
     try {
-        const response = await axios.get(APOD_API_URL);
+
+        var response;
+        var apod_fail = false;
+        try {
+            response = await axios.get(APOD_API_URL);
+        } catch (error) {
+            console.log(error);
+            apod_fail = true;
+        }
 
 
         const jsonData = fs.readFileSync("rover_info.json");
@@ -43,7 +51,13 @@ server.get("/", async (req, res) => {
 
         if (rover_obj.date === new Date().toDateString())
         {
-            res.render("index.ejs", {APOD: response.data, rover_data: rover_obj});
+            if(!apod_fail)
+            {
+                res.render("index.ejs", {APOD: response.data, rover_data: rover_obj});
+            }
+            else{
+                res.render("index.ejs", {rover_data: rover_obj});
+            }
             console.log("Fetched cached data.");
         }
         else
@@ -100,7 +114,14 @@ server.get("/", async (req, res) => {
                     console.log("json file updated!");
                 });
         
-                res.render("index.ejs", {APOD: response.data, rover_data: rover_info});
+                if(!apod_fail)
+                {
+                    res.render("index.ejs", {APOD: response.data, rover_data: rover_info});
+                }
+                else
+                {
+                    res.render("index.ejs", {rover_data: rover_info});
+                }
             }
             catch(error)
             {
@@ -110,7 +131,6 @@ server.get("/", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        throw error;
     }
 });
 
