@@ -112,6 +112,15 @@ html{
     background-color: var(--background_colour);
 }
 
+:root{
+    --apod_vid_width: 100vw;
+}
+
+.APOD_Video{
+    height: calc((var(--apod_vid_width) * (9/16)));
+    width: var(--apod_vid_width);
+}
+
 .mars_banner > h1{
     font-size: 40px;
     z-index: 1;
@@ -852,6 +861,17 @@ footer{
 } 
 
 @media (orientation: landscape){
+
+    :root{
+        --apod_vid_width: 45vw;
+    }
+
+    .APOD_Video{
+        float: left;
+        margin-left: var(--side_margin);
+        margin-right: var(--side_margin);
+    }
+
     .facts_grid{
         width: 50%;
         top: var(--nav_height);
