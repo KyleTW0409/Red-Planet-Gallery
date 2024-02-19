@@ -41,17 +41,17 @@
 
             <div class="rover_selector_v2">
 
-                <% if(locals.rover_data){ %>
-                    <% for(let n = 0; n < rover_data.rover_names.length; n++){ %>
+                <% if(locals.data){ %>
+                    <% for(let n = 0; n < data.rover_objs.length; n++){ %>
                         <div class="selector_ctn">
-                            <img class="rover_select_pic" src="<%= rover_data.rover_images[n] %>" alt="">
+                            <img class="rover_select_pic" src="<%= data.rover_objs[n].image %>" alt="">
 
                             <% if(n != 0){ %>
                                 <div class="cover_div">
                             <% } else { %>
                                 <div class="cover_div selected_rover">
                             <% } %>
-                                <p class="rover_name"><%= rover_data.rover_names[n] %></p>
+                                <p class="rover_name"><%= data.rover_objs[n].name %></p>
                             </div>
                         </div>
                     <% } %>
@@ -63,18 +63,18 @@
 
             <div class="photo_gallery">
 
-                <% if(locals.rover_data){ %>
-                    <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+                <% if(locals.data){ %>
+                    <% for(let n = 0; n < data.rover_objs.length; n++){ %>
                         <% if(n < 1){ %>
-                            <div class="<%= rover_data.rover_names[n] %>_images">
+                            <div class="<%= data.rover_objs[n].name %>_images">
                         <% } else { %>
-                            <div class="<%= rover_data.rover_names[n] %>_images no_display">
+                            <div class="<%= data.rover_objs[n].name %>_images no_display">
                         <% } %>
                             <div class="info_header">
-                                <p class="image_dates">Martian Sol: <span><%= rover_data.photos[n][0].sol %></span> <br>
-                                     Earth Date: <span><%= rover_data.photos[n][0].earth_date %></span> <br>
+                                <p class="image_dates">Martian Sol: <span><%= data.rover_objs[n].photos[0].sol %></span> <br>
+                                     Earth Date: <span><%= data.rover_objs[n].photos[0].earth_date %></span> <br>
                                      <span class="image_update_status">
-                                        <% if(rover_data.rover_manifests[n].status === "complete"){ %>
+                                        <% if(data.rover_objs[n].photos[0].rover.status === "complete"){ %>
                                             * Images are from random date.
                                         <% } else{ %>
                                             * Images are latest available.
@@ -88,12 +88,12 @@
                                 </div>
                             </div>
                             <div class="photos_container">
-                            <% for(let m = 0; m < rover_data.photos[n].length; m++){ %>
+                            <% for(let m = 0; m < data.rover_objs[n].photos.length; m++){ %>
 
                                 <% if(m % 5 == 0){ %>
-                                    <img class="full_screen mars_imagery" src="<%= rover_data.photos[n][m].img_src %>" alt="">
+                                    <img class="full_screen mars_imagery" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
                                 <% } else { %>
-                                    <img class="mars_imagery" src="<%= rover_data.photos[n][m].img_src %>" alt="">
+                                    <img class="mars_imagery" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
                                 <% } %>
 
                             <% } %>
@@ -113,30 +113,30 @@
     <div class="pop_up_div no_display">
         <div class="close_btn_ctn"><img src="./images/cross-svgrepo-com.svg" alt=""></div>
 
-        <% if(locals.rover_data){ %>
+        <% if(locals.data){ %>
 
-            <% for(let n = 0; n < rover_data.rover_images.length; n++){ %>
+            <% for(let n = 0; n < data.rover_objs.length; n++){ %>
 
-                <div class="rover_info <%= rover_data.rover_names[n] %>_info no_display">
+                <div class="rover_info <%= data.rover_objs[n].name %>_info no_display">
                     <div class="div_for_portrait">
-                        <h1><%= rover_data.rover_names[n] %> Rover</h1>
-                        <img src="<%= rover_data.rover_images[n] %>" alt="">
+                        <h1><%= data.rover_objs[n].name %> Rover</h1>
+                        <img src="<%= data.rover_objs[n].image %>" alt="">
                         <div style="display: flex; flex-direction: column;">
-                            <p><%- rover_data.rover_descriptions[n] %></p>
+                            <p><%- data.rover_objs[n].description %></p>
                             <p class="rover_facts">
-                                Launch Date: <span><%= rover_data.rover_manifests[n].launch_date %></span> <br>
-                                Landing Date: <span><%= rover_data.rover_manifests[n].landing_date %></span> <br>
-                                Mission Status: <span><%= rover_data.rover_manifests[n].status %></span> <br>
-                                Latest Martian sol with images: <span><%= rover_data.rover_manifests[n].max_sol %></span> <br>
-                                Latest Earth date with images: <span><%= rover_data.rover_manifests[n].max_date %></span> <br>
-                                Total photos taken: <span><%= rover_data.rover_manifests[n].total_photos %></span>
+                                Launch Date: <span><%= data.rover_objs[n].photos[0].rover.launch_date %></span> <br>
+                                Landing Date: <span><%= data.rover_objs[n].photos[0].rover.landing_date %></span> <br>
+                                Mission Status: <span><%= data.rover_objs[n].photos[0].rover.status %></span> <br>
+                                Latest Martian sol with images: <span><%= data.rover_objs[n].photos[0].rover.max_sol %></span> <br>
+                                Latest Earth date with images: <span><%= data.rover_objs[n].photos[0].rover.max_date %></span> <br>
+                                Total photos taken: <span><%= data.rover_objs[n].photos[0].rover.total_photos %></span>
                             </p>
                         </div>
                             <p class="image_disclaimer">
-                                <% if(rover_data.rover_manifests[n].status === "complete"){ %>
-                                    * Due to <%= rover_data.rover_names[n] %> having completed it's mission images are radomly selected from within it's lifespan.
+                                <% if(data.rover_objs[n].photos[0].rover.status === "complete"){ %>
+                                    * Due to <%= data.rover_objs[n].name %> having completed it's mission images are radomly selected from within it's lifespan.
                                 <% } else { %>
-                                    * Images from <%= rover_data.rover_names[n] %> are the latest available.
+                                    * Images from <%= data.rover_objs[n].name %> are the latest available.
                                 <% } %>
                             </p>
                     </div>
@@ -151,15 +151,19 @@
         </div>
 
            <div class="APOD_Container no_display">
-            <% if(locals.APOD){ %>
+            <% if(locals.data){ %>
                     <h2>Picture Of The Day</h2>
                     <p class="apod_date"> <% let date =  new Date().toDateString(); %> <%= date %> </p>
                     <div class="div_for_portrait">
-                        <img class="APOD_Image" src="<%= APOD.url %>" alt="">
+                        <% if(data.apod_obj.type == "image"){ %>
+                            <img class="APOD_Image" src="<%= data.apod_obj.image %>" alt="">
+                        <% } else { %>
+                            <iframe class="APOD_Video" src="<%= data.apod_obj.image %>" frameborder="0"></iframe>
+                        <% } %>
                 
                         <div class="image_description">
-                            <h3><%= APOD.title %></h3>
-                            <p><%= APOD.explanation %></p>
+                            <h3><%= data.apod_obj.title %></h3>
+                            <p><%= data.apod_obj.description %></p>
                         </div>
                     </div>
                 <% } else { %>
@@ -268,7 +272,6 @@
             $(".scroll_up_ctn").fadeOut(100);
         }
 
-        
         if(scrollPos > 0)
         {
             $(".header").addClass("header_scroll");
