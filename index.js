@@ -31,8 +31,6 @@ server.use(express.static("public"));
     date: ""
 }*/
 
-const inactive_rovers = ["spirit", "opportunity"]
-
 const app_data = await readJsonFile();
 
 server.get("/", async (req, res) => {
@@ -97,7 +95,6 @@ async function getRover_Photos(rover_name)
         else
         {
             var randSol = randomNumber(getMaxSol(rover_name));
-            console.log(randSol);
             photos_response = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover_name}/photos?sol=${randSol}&api_key=${NASA_ApiKey}`);
 
             while(photos_response.data.photos.length < 25)
