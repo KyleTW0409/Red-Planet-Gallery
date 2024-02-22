@@ -91,9 +91,9 @@
                             <% for(let m = 0; m < data.rover_objs[n].photos.length; m++){ %>
 
                                 <% if(m % 5 == 0){ %>
-                                    <img class="full_screen mars_imagery" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
+                                    <img class="full_screen mars_imagery" id="<%= data.rover_objs[n].photos[m].id %>*<%= data.rover_objs[n].photos[m].camera.full_name %> (<%= data.rover_objs[n].photos[m].camera.name %>)" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
                                 <% } else { %>
-                                    <img class="mars_imagery" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
+                                    <img class="mars_imagery" id="<%= data.rover_objs[n].photos[m].id %>*<%= data.rover_objs[n].photos[m].camera.full_name %> (<%= data.rover_objs[n].photos[m].camera.name %>)" src="<%= data.rover_objs[n].photos[m].img_src %>" alt="">
                                 <% } %>
 
                             <% } %>
@@ -148,6 +148,10 @@
 
         <div class="image_viewer_ctn no_display">
             <img class="full_screen_view" src="" alt="">
+            <p class="image_info">
+                Image ID: </br><span id="image_id">221050036</span> </br> </br>
+                Camera: </br> <span id="image_camera">Front Hazard Avoidance Camera (FHAZ)</span> </br>
+            </p>
         </div>
 
            <div class="APOD_Container no_display">
@@ -253,6 +257,13 @@
         $(".image_viewer_ctn").removeClass("no_display")
 
         var img_src = event.target.getAttribute("src");
+        var img_info = event.target.getAttribute("id").split("*");
+        var img_id = img_info[0];
+        var img_camera = img_info[1];
+
+        $("#image_id").text(img_id);
+        $("#image_camera").text(img_camera);
+
 
         $(".full_screen_view").attr("src", img_src);
     });

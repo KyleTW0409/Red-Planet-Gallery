@@ -538,6 +538,19 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.image_info{
+    align-self: flex-start;
+    margin-left: var(--side_margin);
+    margin-right: var(--side_margin);
+    font-size: small;
+}
+
+.image_info > span{
+    color: var(--accent_colour);
 }
 
 .full_screen_view{
@@ -693,6 +706,11 @@ footer{
     font-size: 30px;
 }
 
+.image_info{
+    font-size: medium;
+    align-self: center;
+}
+
 .rover_info h1{
     font-size: 35px;
 }
@@ -732,6 +750,7 @@ footer{
     .image_viewer_ctn{
         width: 100%;
         justify-content: center;
+        flex-direction: row;
     }
     
     .full_screen_view{
