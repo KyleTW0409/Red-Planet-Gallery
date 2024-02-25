@@ -56,7 +56,7 @@ html{
     align-items: center;
     z-index: 2;
     position: fixed;
-    justify-content: space-between;
+    justify-content: space-between; 
     height: var(--nav_height);
     border-bottom: 2px solid transparent;
     transition: 0.5s;
@@ -104,6 +104,7 @@ html{
     border: 2px solid var(--accent_colour);
     padding: 7px;
     border-radius: 10px;
+    box-shadow: 2px 2px 4px #4a4a4ab4;
 }
 
 #apod_icon:hover{
@@ -122,15 +123,16 @@ html{
 }
 
 .mars_banner > h1{
-    font-size: 40px;
+    font-size: 45px;
     z-index: 1;
-    top: calc(var(--nav_height) + 30px);
+    top: calc(var(--nav_height) + 50px);
     position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
     text-align: center;
+    text-shadow: 7px 7px 5px black;
 }
 
 .mars_banner > img{
@@ -336,6 +338,7 @@ html{
     border: 2px solid var(--accent_colour);
     padding: 7px;
     border-radius: 10px;
+    box-shadow: 2px 2px 5px #4A4A4A;
 }
 
 
@@ -687,6 +690,12 @@ footer{
     color: white !important;
 }
 
+@media screen and (min-width: 400px) {
+    .mars_banner > h1{
+        font-size: 60px;
+    }
+}
+
 @media screen and (min-width: 600px) {
 
     .mars_banner > img{
@@ -694,7 +703,7 @@ footer{
     }
 
     .mars_banner > h1{
-        font-size: 55px !important;
+        font-size: 80px !important;
     }
 
     
